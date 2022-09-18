@@ -83,8 +83,8 @@ const VideoDetail = ({ video },props) => {
         <Typography variant="subtitle1">{video.snippet.channelTitle}</Typography>
         <Typography variant="subtitle2">{video.snippet.description}</Typography>
         {/* <Typography variant="subtitle2"></Typography> */}
-        <Typography variant="h6"> {stats.viewCount} views<ThumbUp fontSize="large" />{stats.likeCount}
-          <ThumbDown fontSize="large" />Dislike</Typography>
+        <Typography variant="h6"> {stats.viewCount} views<ThumbUp fontSize="large" style = {{ marginRight: '5px',marginLeft: '20px'}} />{stats.likeCount}
+          <ThumbDown fontSize="large" style = {{ marginRight: '5px',marginLeft: '20px'}} />Dislike</Typography>
       
       </Paper>
 

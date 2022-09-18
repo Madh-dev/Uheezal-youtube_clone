@@ -40,10 +40,10 @@
   margin-top: 15px !important;
 }
 
-.css-tzssek-MuiSvgIcon-root {
+/* .css-tzssek-MuiSvgIcon-root {
   margin-right: 5px;
   margin-left: 20px;
-}
+} */
 
 
 .css-ahj2mt-MuiTypography-root {
@@ -58,23 +58,26 @@
 
 
 @media screen and (max-width: 990px) {
-  .css-11reh94-MuiGrid-root{
+  .contain{
     display: flex !important;
     flex-direction: row !important;
   }
-  .css-vok43g-MuiGrid-root{
-    max-width: 100% !important;
+  .videoDetail{
+    margin: 0 auto !important;
+    width: 800px !important;
+    max-width: 200% !important;
     order: 1;
   }
-  .css-gj1fbr-MuiGrid-root{
+  .videoList{
     max-width: 100% !important;
     order: 2;
-    margin-top: 200px !important;
+    
     margin: 0 auto !important;
+    margin-top: 200px !important;
 }
 }
 @media screen and (max-width: 800px){
-  .css-gj1fbr-MuiGrid-root{
+  .videoList{
     width: 100% !important;
     max-width: 100% !important;
     order: 2;
@@ -83,7 +86,7 @@
     margin-top: 200px !important;
     
 }
-.css-vok43g-MuiGrid-root{
+.videoDetail{
   width: 100% !important;
   margin: 0 auto !important;
   max-width: 100% !important;

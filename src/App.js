@@ -37,15 +37,15 @@ function App() {
   return (
     <Grid justifyContent="center" container spacing= {10}>
     <Grid item xs={12}>
-    <Grid  container spacing= {10}>
+    <Grid  container spacing= {10} className = 'contain'>
     <Grid item xs={12}>
       <Search onformSubmit= {handleSubmit}/>
     </Grid>
-    <Grid item xs={8}>
-      <VideoDetail video={selectedVideo}/>
+    <Grid item xs={8} className = "videoDetail" >
+      <VideoDetail video={selectedVideo} />
     </Grid>
-    <Grid item xs={4}>
-      <VideoList videos={videos} onVideoSelect = { onVideoSelect}/>
+    <Grid item xs={4} className = "videoList">
+      <VideoList videos={videos} onVideoSelect = { onVideoSelect} />
     </Grid>
     </Grid>
     </Grid>
