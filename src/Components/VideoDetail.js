@@ -5,7 +5,7 @@ import { ThumbUp, ThumbDown } from '@mui/icons-material';
 const VideoDetail = ({ video }) => {
 
   const [comments, setComments] = useState([]);
-  const [stats, setStats] = useState([]);
+  const [stats, setStats] = useState('');
 
   const apikey = 'AIzaSyC0mEPiqTyDUdP6ifWyIh-uGibCzQ8ec70';
 
@@ -13,13 +13,11 @@ const VideoDetail = ({ video }) => {
   //for likes and viewco
 
   useEffect(() => {
-    const videot = video.id.videoId;
     async function myStatdata() {
-
       const response = await Api.get('videos', {
         params: {
           part: 'statistics',
-          id: videot,
+          id: video.id.videoId,
           key: apikey,
         }
       });
@@ -27,11 +25,10 @@ const VideoDetail = ({ video }) => {
       setStats(response.data.items[0].statistics);
     }
     myStatdata();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    //eslint-disable-next-line
+  }, [setStats])
   // fetching comment
   const cool = async () => {
-    
     const response = await Api.get('commentThreads', {
       params: {
         part: 'snippet',
