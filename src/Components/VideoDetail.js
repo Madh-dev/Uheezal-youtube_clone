@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Api from '../Api/Api'
 import { Paper, Typography } from '@mui/material';
 import { ThumbUp, ThumbDown } from '@mui/icons-material';
-const VideoDetail = ({ video }) => {
+const VideoDetail = ({ video },props) => {
 
   const [comments, setComments] = useState([]);
   const [stats, setStats] = useState('');
@@ -11,22 +11,27 @@ const VideoDetail = ({ video }) => {
 
 
   //for likes and viewco
-
+  async function myStatdata() {
+     
+     
+    const response = await Api.get('videos', {
+      params: {
+        part: 'statistics',
+        id: video.id.videoId,
+        key: apikey,
+      }
+    });
+    // console.log(response.data.items[0].statistics);
+    setStats(response.data.items[0].statistics);
+  }
   useEffect(() => {
-    async function myStatdata() {
-      const response = await Api.get('videos', {
-        params: {
-          part: 'statistics',
-          id: video.id.videoId,
-          key: apikey,
-        }
-      });
-      // console.log(response.data.items[0].statistics);
-      setStats(response.data.items[0].statistics);
-    }
+   
+     
+     
     myStatdata();
-    //eslint-disable-next-line
-  }, [setStats])
+    // eslint-disable-next-line
+  });
+
   // fetching comment
   const cool = async () => {
     const response = await Api.get('commentThreads', {
@@ -62,7 +67,7 @@ const VideoDetail = ({ video }) => {
 
   ))
 
-  console.log(stats);
+  // console.log(stats);
 
   if (!video) return <div>Loading....</div>
   const videosrc = `https://www.youtube.com/embed/${video.id.videoId}`;
@@ -80,10 +85,7 @@ const VideoDetail = ({ video }) => {
         {/* <Typography variant="subtitle2"></Typography> */}
         <Typography variant="h6"> {stats.viewCount} views<ThumbUp fontSize="large" />{stats.likeCount}
           <ThumbDown fontSize="large" />Dislike</Typography>
-        {/* <Typography variant="subtitle2">
-          <Typography>{stats.likeCount} </Typography>
-          <Typography> Dislike</Typography>
-        </Typography> */}
+      
       </Paper>
 
 
