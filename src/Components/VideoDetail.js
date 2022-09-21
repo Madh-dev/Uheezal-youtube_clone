@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Api from '../Api/Api'
 import { Paper, Typography } from '@mui/material';
 import { ThumbUp, ThumbDown } from '@mui/icons-material';
-const VideoDetail = ({ video },props) => {
+const VideoDetail = ({ video,loading,error },props) => {
 
   const [comments, setComments] = useState([]);
   const [stats, setStats] = useState('');
@@ -69,7 +69,8 @@ const VideoDetail = ({ video },props) => {
 
   // console.log(stats);
 
-  if (!video) return <div>Loading....</div>
+  if (!video && loading) return <div>Loading....</div>
+  if (error) return <div>{error}</div>
   const videosrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
 
@@ -78,27 +79,21 @@ const VideoDetail = ({ video },props) => {
       <Paper elevation={6} style={{ height: '25%' }} onLoad={cool}  >
         <iframe frameBorder='0' height='100%' width='100%' title='Video Player' src={videosrc} />
       </Paper>
-      <Paper elevation={6} style={{}}>
+      <Paper elevation={6} style={{paddingLeft: '0px', paddingRight: '5px'}}>
         <Typography variant="h4">{video.snippet.title} - {video.snippet.channelTitle}</Typography>
         <Typography variant="subtitle1">{video.snippet.channelTitle}</Typography>
         <Typography variant="subtitle2">{video.snippet.description}</Typography>
-        {/* <Typography variant="subtitle2"></Typography> */}
-        <Typography variant="h6"> {stats.viewCount} views<ThumbUp fontSize="large" style = {{ marginRight: '5px',marginLeft: '20px'}} />{stats.likeCount}
+          {/* statistics section */}
+        <Typography variant="h6" className='stat'> {stats.viewCount} views<ThumbUp fontSize="large" style = {{ marginRight: '5px',marginLeft: '20px'}} />{stats.likeCount}
           <ThumbDown fontSize="large" style = {{ marginRight: '5px',marginLeft: '20px'}} />Dislike</Typography>
       
       </Paper>
 
-
-      {/* statistics section */}
-      <div className='statistics'>
-
-      </div>
-
       {/* comment section */}
-      <>
+      <div className='cumments'>
         <h3 className='comments'>Comments   {stats.commentCount}</h3>
         <div>{cumment}</div>
-      </>
+      </div>
     </>
 
   )

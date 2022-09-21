@@ -44,7 +44,15 @@
   margin-right: 5px;
   margin-left: 20px;
 } */
-
+.more_videos {
+  font-size:  18px ;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px auto;
+  text-decoration: underline;
+}
 
 .css-ahj2mt-MuiTypography-root {
   display: flex !important;
@@ -55,6 +63,10 @@
 .comments {
   text-align: center !important;
 }
+.stat{
+  display: flex;
+  align-items: center;
+}
 
 
 @media screen and (max-width: 990px) {
@@ -64,16 +76,21 @@
   }
   .videoDetail{
     margin: 0 auto !important;
+    margin-bottom: 20px !important;
     width: 800px !important;
     max-width: 200% !important;
+    flex-basis: 100% !important;
     order: 1;
   }
   .videoList{
     max-width: 100% !important;
     order: 2;
-    
     margin: 0 auto !important;
+    flex-basis: 100% !important;
     margin-top: 200px !important;
+}
+.cumments{
+  margin-bottom: 20px;
 }
 }
 @media screen and (max-width: 800px){
@@ -81,15 +98,20 @@
     width: 100% !important;
     max-width: 100% !important;
     order: 2;
-    
+    flex-basis: 100% !important;
     margin: 0 auto !important;
     margin-top: 200px !important;
     
 }
 .videoDetail{
+  flex-basis: 100% !important;
   width: 100% !important;
   margin: 0 auto !important;
+  margin-bottom: 40px !important;
   max-width: 100% !important;
   order: 1;
+}
+.cumments{
+  margin-bottom: 20px;
 }
 }

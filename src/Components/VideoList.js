@@ -7,6 +7,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
 
   return (
     <Grid container spacing={10}>
+     {videos && <div className='more_videos'>More videos</div>} 
       {videoList}
     </Grid>
   )
